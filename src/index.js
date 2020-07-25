@@ -7,9 +7,27 @@ import * as serviceWorker from './serviceWorker';
 import { Provider } from "react-redux";
 import store from "./redux/store";
 
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route
+} from "react-router-dom";
+
 ReactDOM.render(
   <Provider store={store}>
-    <App />
+    <Router>      
+      <Switch>
+          <Route path="/movie">
+            <div>movie</div>
+          </Route>
+          <Route path="/search">
+            <div>search</div>
+          </Route>
+          <Route path="/">
+            <App />
+          </Route>
+        </Switch>            
+    </Router>
   </Provider>,
   document.getElementById('root')
 );
