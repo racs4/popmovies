@@ -12,16 +12,18 @@ import {
   Switch,
   Route
 } from "react-router-dom";
+import MoviePage from './MoviePage';
+import SearchPage from './SearchPage';
 
 ReactDOM.render(
   <Provider store={store}>
     <Router>      
       <Switch>
-          <Route path="/movie">
-            <div>movie</div>
+          <Route path="/movie/:id">
+            <MoviePage />
           </Route>
           <Route path="/search">
-            <div>search</div>
+            <SearchPage />
           </Route>
           <Route path="/">
             <App />
