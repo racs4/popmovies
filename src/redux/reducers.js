@@ -1,9 +1,10 @@
-import { ADD_TODO, TOGGLE_TODO, REQUESTING_DATA, RECEIVED_POP_MOVIES, SEARCH, RECEIVED_MOVIE } from "./actionTypes";
+import { ADD_TODO, TOGGLE_TODO, REQUESTING_DATA, RECEIVED_POP_MOVIES, SEARCH, RECEIVED_MOVIE, RECEIVED_SEARCH_RESULT } from "./actionTypes";
 
 const initialState = {
   movies: [],
   fetching: false,
   selectedMovie: {},
+  searchResult: [],
 };
 
 export default function(state = initialState, action) {
@@ -23,6 +24,13 @@ export default function(state = initialState, action) {
          ...state,
          selectedMovie: movie,
          fetching: false
+       };
+    case RECEIVED_SEARCH_RESULT:
+       const { result } = action.payload;
+       return {
+         ...state,
+         fetching: false,
+         searchResult: result,
        };
     case ADD_TODO: {
       const { id, content } = action.payload;

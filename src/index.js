@@ -20,9 +20,7 @@ ReactDOM.render(
     <Router>      
       <Switch>
           <Route path="/movie/:id" component={MoviePage} />
-          <Route path="/search">
-            <SearchPage />
-          </Route>
+          <Route path="/search/:query" component={SearchPage} />
           <Route path="/">
             <App />
           </Route>

@@ -1,11 +1,32 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import {searchMovie} from './redux/actions';
 
-const SearchPage = () => {
-    return (
-        <div>
-            Search Page
-        </div>
-    );
+class SearchPage extends React.Component {
+    
+    componentDidMount() {
+        this.props.searchMovie(this.props.match.params.query);
+    }
+
+    render() {        
+        return this.props.fetching ?
+        (
+            <div>
+                Carregando
+            </div>
+        )
+        :
+        (
+            <div>
+                <ul>
+                    {this.props.result.map( (obj, i) => {
+                        return (<li key={i}> {obj.title} </li>);
+                    })}
+                </ul>
+            </div>
+        )
+        ;
+    }
 }
 
-export default SearchPage;
+export default connect( (state) => ({result: state.searchResult, fetching: state.fetching}), { searchMovie } )(SearchPage);
