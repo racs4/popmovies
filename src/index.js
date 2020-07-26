@@ -19,9 +19,7 @@ ReactDOM.render(
   <Provider store={store}>
     <Router>      
       <Switch>
-          <Route path="/movie/:id">
-            <MoviePage />
-          </Route>
+          <Route path="/movie/:id" component={MoviePage} />
           <Route path="/search">
             <SearchPage />
           </Route>

@@ -1,6 +1,6 @@
-import { ADD_TODO, TOGGLE_TODO, SET_FILTER, REQUESTING_DATA, RECEIVED_POP_MOVIES } from "./actionTypes";
+import { ADD_TODO, TOGGLE_TODO, SET_FILTER, REQUESTING_DATA, RECEIVED_POP_MOVIES, RECEIVED_MOVIE } from "./actionTypes";
 import axios from 'axios';
-import { API_URL, API_PARAMETERS } from '../config';
+import { API_URL, API_PARAMETERS, LANGUAGE, API_KEY } from '../config';
 
 let nextTodoId = 0;
 
@@ -12,6 +12,10 @@ const receivedPopMovies = (movies) => ({
     type: RECEIVED_POP_MOVIES, payload: { movies }
 });
 
+const receivedMovie = (movie) => ({
+  type: RECEIVED_MOVIE, payload: { movie }
+});
+
 export const getMovies = () => {
     return function(dispatch) {
         dispatch(requestingPopMovies());
@@ -21,6 +25,20 @@ export const getMovies = () => {
                 dispatch(receivedPopMovies(response.data.results));
             });        
     }
+}
+
+export const getMovie = (movieId) => {
+  return function(dispatch) {
+    dispatch(requestingPopMovies());
+    axios.get(`${API_URL}/movie/${movieId}?api_key=${API_KEY}&language=${LANGUAGE}`)
+      .then((response) => {
+        console.log(response);
+        dispatch(receivedMovie(response.data));
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
 }
 
 export const addTodo = content => ({

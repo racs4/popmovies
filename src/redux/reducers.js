@@ -1,8 +1,9 @@
-import { ADD_TODO, TOGGLE_TODO, REQUESTING_DATA, RECEIVED_POP_MOVIES, SEARCH } from "./actionTypes";
+import { ADD_TODO, TOGGLE_TODO, REQUESTING_DATA, RECEIVED_POP_MOVIES, SEARCH, RECEIVED_MOVIE } from "./actionTypes";
 
 const initialState = {
   movies: [],
   fetching: false,
+  selectedMovie: {},
 };
 
 export default function(state = initialState, action) {
@@ -16,6 +17,13 @@ export default function(state = initialState, action) {
             fetching: false,
             movies
         };
+    case RECEIVED_MOVIE:
+       const { movie } = action.payload;
+       return {
+         ...state,
+         selectedMovie: movie,
+         fetching: false
+       };
     case ADD_TODO: {
       const { id, content } = action.payload;
       return {
