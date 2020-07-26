@@ -6,6 +6,14 @@ class SearchPage extends React.Component {
     
     componentDidMount() {
         this.props.searchMovie(this.props.match.params.query);
+        console.log(this.props.match.params.query);
+    }
+
+    componentDidUpdate(nextProps) {
+        if (this.props.match.params.query !== nextProps.match.params.query) {
+            this.props.searchMovie(this.props.match.params.query);
+        }          
+        console.log(this.props);
     }
 
     render() {        

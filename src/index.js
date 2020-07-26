@@ -14,10 +14,12 @@ import {
 } from "react-router-dom";
 import MoviePage from './MoviePage';
 import SearchPage from './SearchPage';
+import Header from './Header';
 
 ReactDOM.render(
-  <Provider store={store}>
+  <Provider store={store}>    
     <Router>      
+      <Header />
       <Switch>
           <Route path="/movie/:id" component={MoviePage} />
           <Route path="/search/:query" component={SearchPage} />

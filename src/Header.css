@@ -1,0 +1,32 @@
+.header {
+  background-color: transparent;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding-top: 20px;
+}
+
+.header-search input {
+  background-color: transparent;
+  border: None;
+
+  box-shadow: 0 0 0 0;
+  outline: 0;
+  color: lightcyan;
+  font-size: 1rem;  
+}
+
+.header-search input:focus {
+  background-color: transparent;  
+  box-shadow: 0 0 0 0;
+  outline: 0;
+}
+
+.header-search i, .header-search input {
+  animation: all .5s ease;
+}
+
+.header-search a {
+  text-decoration: none;
+  color: lightcyan;
+}
