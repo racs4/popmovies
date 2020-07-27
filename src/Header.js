@@ -20,7 +20,8 @@ class Header extends React.Component {
 
   redirect() {
       if (this.state.query === "") {
-        return <Redirect to="/" />
+        return <span></span>
+        // return <Redirect to="/" />
       } else {
         return <Redirect to={`/search/${this.state.query}`} />
       }
