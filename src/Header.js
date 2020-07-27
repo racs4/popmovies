@@ -30,7 +30,7 @@ class Header extends React.Component {
     return (
       <div>
         <div className="header">
-            <h1 className="header-logo">PopMovies</h1>
+            <Link to="/"> <h1 className="header-logo">PopMovies </h1> </Link>
             <div className="header-search">
             <input placeholder="Busque por filmes..." value={this.state.query} onChange={this.handleChange}/>
             <Link to={`/search/${this.state.query}`}> <i className="fas fa-search" style={{fontSize: "1.25rem"}}></i> </Link>

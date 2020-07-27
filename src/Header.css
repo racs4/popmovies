@@ -4,6 +4,15 @@
   justify-content: space-around;
   align-items: center;
   padding-top: 20px;
+  position: absolute;
+  top: 0;
+  width: 100%;  
+  height: 10vh;
+  text-shadow: black 2px 2px;
+}
+
+.header h1 {
+  font-family: 'Pacifico', cursive;
 }
 
 .header-search input {
@@ -14,6 +23,7 @@
   outline: 0;
   color: lightcyan;
   font-size: 1rem;  
+  text-shadow: black 1px 1px;
 }
 
 .header-search input:focus {
@@ -21,12 +31,7 @@
   box-shadow: 0 0 0 0;
   outline: 0;
 }
-
-.header-search i, .header-search input {
-  animation: all .5s ease;
-}
-
-.header-search a {
+.header a {
   text-decoration: none;
   color: lightcyan;
 }

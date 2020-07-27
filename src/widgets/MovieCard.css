@@ -1,0 +1,72 @@
+#movie-year {
+    position: absolute;
+    bottom: 2px;
+    left: 2px;
+    font-weight: 700;
+    /* text-shadow: black 2px 2px; */
+    color: black;
+    background-color: white;
+    padding: 0 5px;
+    border-radius: 2px;
+}
+
+#movie-rate{
+    position: absolute;
+    font-weight: 700;
+    bottom: 0;
+    right: 0;
+    color: black;
+    background-color: yellow;
+    border-radius: 2px;
+    padding: 0 5px;
+}
+
+.movie-card {
+    transition: all .5s ease;
+    cursor: pointer;
+    overflow: auto;
+}
+
+.movie-card:hover {
+    transform: scale(1.1);
+}
+
+.detail {
+    display: none;
+}
+
+.detail-active.movie-card:hover {
+    height: 100%;
+}
+
+.detail-active.movie-card:hover > img {    
+    display: none;
+}
+
+.detail-active.movie-card:hover .movie-card-title, .detail-active.movie-card:hover .movie-card-text {    
+    display: block;
+}
+
+.detail-active.movie-card:hover #movie-year, .detail-active.movie-card:hover #movie-rate {
+    display: none;
+}
+
+/* width */
+::-webkit-scrollbar {
+width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+background: #f1f1f1; 
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+background: #888; 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+background: #555; 
+}

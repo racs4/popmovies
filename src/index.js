@@ -18,8 +18,7 @@ import Header from './Header';
 
 ReactDOM.render(
   <Provider store={store}>    
-    <Router>      
-      <Header />
+    <Router>            
       <Switch>
           <Route path="/movie/:id" component={MoviePage} />
           <Route path="/search/:query" component={SearchPage} />
@@ -27,7 +26,8 @@ ReactDOM.render(
             <App />
           </Route>
         </Switch>            
-    </Router>
+      <Header />
+    </Router>    
   </Provider>,
   document.getElementById('root')
 );

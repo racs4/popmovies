@@ -1,0 +1,37 @@
+@media (prefers-reduced-motion: reduce) {
+    .carousel-item {
+        transition: -webkit-transform 2s ease-in-out;
+        transition: transform 2s ease-in-out;
+        transition: transform 2s ease-in-out,-webkit-transform 2s ease-in-out;
+    }
+}
+
+.pop-movies h1{
+    font-family: 'Pacifico', cursive;
+}
+
+.carousel-item {
+    transition: -webkit-transform 2s ease-in-out;
+    transition: transform 2s ease-in-out;
+    transition: transform 2s ease-in-out,-webkit-transform 2s ease-in-out;
+}
+
+.carousel-item  {    
+    height: 100%;
+    background-position: top center;
+    animation: posterShow 15s 1 ease-out;
+}
+
+@keyframes posterShow {
+    100% {background-position: center center;}
+}
+
+.carousel-inner {
+    height: 100vh;
+}
+
+.carousel-caption {
+    text-shadow: black 2px 2px 7px;    
+    text-align: left;
+    right: 40%;
+}
