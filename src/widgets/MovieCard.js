@@ -6,7 +6,7 @@ const MovieCard = (props) => {
     let detailActive = props.detail ? "detail-active" : "";
     return (
         <div className={`card bg-dark text-white movie-card ${detailActive}`}>
-            <img className={`card-img `} src={`${IMAGE_URL}/w500${props.movie.poster_path}`} alt={props.movie.title} ></img>
+            <img className={`card-img `} src={`${IMAGE_URL}/w780${props.movie.poster_path}`} alt={props.movie.title} ></img>
             <div className="card-img-overlay">
                 <h5 className={`card-title movie-card-title detail `} > {props.movie.title} </h5> 
                 <p className={`card-text movie-card-text detail `} >{props.movie.overview}</p> 
