@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import {searchMovie} from './redux/actions';
+import Loader from './widgets/Loader';
 
 class SearchPage extends React.Component {
     
@@ -20,7 +21,7 @@ class SearchPage extends React.Component {
         return this.props.fetching ?
         (
             <div>
-                Carregando
+                <Loader />
             </div>
         )
         :
