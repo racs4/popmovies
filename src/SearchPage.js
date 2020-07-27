@@ -2,6 +2,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 import {searchMovie} from './redux/actions';
 import Loader from './widgets/Loader';
+import './SearchPage.css';
+import MovieCard from './widgets/MovieCard';
 
 class SearchPage extends React.Component {
     
@@ -18,6 +20,7 @@ class SearchPage extends React.Component {
     }
 
     render() {        
+        console.log(this.props);
         return this.props.fetching ?
         (
             <div>
@@ -25,17 +28,24 @@ class SearchPage extends React.Component {
             </div>
         )
         :
-        (
-            <div>
-                <ul>
-                    {this.props.result.map( (obj, i) => {
-                        return (<li key={i}> {obj.title} </li>);
-                    })}
-                </ul>
+        (   
+            <div className="search-page mb-5">
+                <div className="container">
+                    <h2>{this.props.resultQtt} results were found...</h2>
+                    <div className="row">
+                        {this.props.result.map( (obj, i) => {
+                            return (
+                                <div key={i} className="col-2 mt-5">
+                                    <MovieCard movie={obj} /> 
+                                </div>                                                   
+                            );
+                        })}
+                    </div>
+                </div>
             </div>
         )
         ;
     }
 }
 
-export default connect( (state) => ({result: state.searchResult, fetching: state.fetching}), { searchMovie } )(SearchPage);
+export default connect( (state) => ({result: state.searchResult, fetching: state.fetching, resultQtt: state.searchResultQtt}), { searchMovie } )(SearchPage);

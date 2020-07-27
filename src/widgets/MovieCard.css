@@ -24,11 +24,16 @@
 .movie-card {
     transition: all .5s ease;
     cursor: pointer;
-    overflow: auto;
+    overflow: auto;    
 }
 
 .movie-card:hover {
     transform: scale(1.1);
+}
+
+.movie-card.detail {
+    height: 100%;
+    display: block;
 }
 
 .detail {

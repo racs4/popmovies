@@ -5,6 +5,7 @@ const initialState = {
   fetching: false,
   selectedMovie: {},
   searchResult: [],
+  searchResultQtt: 0,
 };
 
 export default function(state = initialState, action) {
@@ -26,11 +27,13 @@ export default function(state = initialState, action) {
          fetching: false
        };
     case RECEIVED_SEARCH_RESULT:
-       const { result } = action.payload;
+       const { result, resultQtt } = action.payload;
+       console.log(resultQtt);
        return {
          ...state,
          fetching: false,
          searchResult: result,
+         searchResultQtt: resultQtt,
        };
     case ADD_TODO: {
       const { id, content } = action.payload;
