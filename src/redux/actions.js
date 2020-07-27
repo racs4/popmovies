@@ -34,7 +34,7 @@ export const getMovies = () => {
 export const getMovie = (movieId) => {
   return function(dispatch) {
     dispatch(requestingPopMovies());
-    axios.get(`${API_URL}/movie/${movieId}?api_key=${API_KEY}&language=${LANGUAGE}`)
+    axios.get(`${API_URL}/movie/${movieId}?api_key=${API_KEY}&language=${LANGUAGE}&append_to_response=recommendations,similar,videos`)
       .then((response) => {
         console.log(response);
         dispatch(receivedMovie(response.data));
