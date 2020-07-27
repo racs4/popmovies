@@ -20,8 +20,9 @@ const conversor = (number) => {
 
 class MoviePage extends React.Component {
 
-    componentDidMount() {
+    componentDidMount() {        
         this.props.getMovie(this.props.match.params.id);
+        window.scrollTo(0, 0);
     }
     
     render() {        
