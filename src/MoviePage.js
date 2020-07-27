@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { getMovie } from './redux/actions';
+import { getMovie, eraseMovie } from './redux/actions';
 import Loader from './widgets/Loader';
 import './MoviePage.css';
 import { IMAGE_URL } from './config';
@@ -23,8 +23,20 @@ class MoviePage extends React.Component {
     componentDidMount() {        
         this.props.getMovie(this.props.match.params.id);
         window.scrollTo(0, 0);
+    }    
+
+    componentWillUnmount() {
+        this.props.eraseMovie();
     }
-    
+
+    componentDidUpdate(nextProps) {
+        if (this.props.match.params.id !== nextProps.match.params.id) {
+            this.props.eraseMovie();
+            this.props.getMovie(this.props.match.params.id);
+            window.scrollTo(0, 0);
+        }        
+    }
+
     render() {        
         console.log(this.props);
         
@@ -83,4 +95,4 @@ class MoviePage extends React.Component {
     }
 }
 
-export default connect((state) => ({selectedMovie: state.selectedMovie, fetching: state.fetching}), ( { getMovie } ) )(MoviePage);
+export default connect((state) => ({selectedMovie: state.selectedMovie, fetching: state.fetching}), ( { getMovie, eraseMovie } ) )(MoviePage);

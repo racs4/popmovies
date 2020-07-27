@@ -1,4 +1,4 @@
-import { ADD_TODO, TOGGLE_TODO, REQUESTING_DATA, RECEIVED_POP_MOVIES, SEARCH, RECEIVED_MOVIE, RECEIVED_SEARCH_RESULT } from "./actionTypes";
+import { ADD_TODO, TOGGLE_TODO, REQUESTING_DATA, RECEIVED_POP_MOVIES, SEARCH, RECEIVED_MOVIE, RECEIVED_SEARCH_RESULT, ERASE_MOVIE } from "./actionTypes";
 
 const initialState = {
   movies: [],
@@ -34,6 +34,11 @@ export default function(state = initialState, action) {
          fetching: false,
          searchResult: result,
          searchResultQtt: resultQtt,
+       };
+    case ERASE_MOVIE: 
+       return {
+         ...state,
+         selectedMovie: {},
        };
     case ADD_TODO: {
       const { id, content } = action.payload;

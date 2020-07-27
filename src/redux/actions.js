@@ -1,8 +1,12 @@
-import { ADD_TODO, TOGGLE_TODO, SET_FILTER, REQUESTING_DATA, RECEIVED_POP_MOVIES, RECEIVED_MOVIE, RECEIVED_SEARCH_RESULT } from "./actionTypes";
+import { ADD_TODO, TOGGLE_TODO, SET_FILTER, REQUESTING_DATA, RECEIVED_POP_MOVIES, RECEIVED_MOVIE, RECEIVED_SEARCH_RESULT, ERASE_MOVIE } from "./actionTypes";
 import axios from 'axios';
 import { API_URL, API_PARAMETERS, LANGUAGE, API_KEY } from '../config';
 
 let nextTodoId = 0;
+
+export const eraseMovie = () => ({
+  type: ERASE_MOVIE,
+});
 
 const requestingPopMovies = () => ({
     type: REQUESTING_DATA,
