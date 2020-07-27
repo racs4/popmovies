@@ -1,0 +1,27 @@
+.page-link {
+    background-color: black;
+    border: 1px solid #251010;
+    color: lightcyan;
+}
+
+.page-link:hover {
+    background-color: #251010;
+    border: 1px solid #251010;
+    color: lightcyan;
+}
+
+.page-item.disabled .page-link {
+    background-color: black;
+    border: 1px solid #251010;
+    color: gray;    
+}
+
+.page-item.active .page-link {
+    background-color: #251010;
+    border: 1px solid #251010;
+    color: gray;    
+}
+
+.page-item.disabled {
+    cursor: not-allowed;
+}

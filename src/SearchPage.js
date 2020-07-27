@@ -1,51 +1,66 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import {searchMovie} from './redux/actions';
+import {searchMovie, eraseSearchResult} from './redux/actions';
 import Loader from './widgets/Loader';
 import './SearchPage.css';
 import MovieCard from './widgets/MovieCard';
+import Pagination from './widgets/Pagination';
+import { Redirect } from 'react-router-dom';
 
 class SearchPage extends React.Component {
     
-    componentDidMount() {
-        this.props.searchMovie(this.props.match.params.query);
-        console.log(this.props.match.params.query);
+    componentDidMount() {        
+        this.props.eraseSearchResult();
+        this.props.searchMovie(this.props.match.params.query, this.props.match.params.pageNumber);    
     }
 
-    componentDidUpdate(nextProps) {
-        if (this.props.match.params.query !== nextProps.match.params.query) {
-            this.props.searchMovie(this.props.match.params.query);
+    componentDidUpdate(nextProps) {           
+        if (this.props.match.params.query !== nextProps.match.params.query ||
+            this.props.match.params.pageNumber !== nextProps.match.params.pageNumber) {          
+            this.props.eraseSearchResult();
+            this.props.searchMovie(this.props.match.params.query, this.props.match.params.pageNumber);    
         }          
-        console.log(this.props);
     }
 
-    render() {        
-        console.log(this.props);
-        return this.props.fetching ?
-        (
-            <div>
-                <Loader />
-            </div>
-        )
-        :
-        (   
-            <div className="search-page mb-5">
-                <div className="container">
-                    <h2>{this.props.resultQtt} results were found...</h2>
-                    <div className="row">
-                        {this.props.result.map( (obj, i) => {
-                            return (
-                                <div key={i} className="col-2 mt-5">
-                                    <MovieCard movie={obj} /> 
-                                </div>                                                   
-                            );
-                        })}
-                    </div>
+    render() {                
+        if (this.props.fetching) {
+            return (
+                <div>
+                    <Loader />
                 </div>
-            </div>
-        )
-        ;
+            );
+        } else {
+            if (this.props.pageQtt === 0) {
+                return (
+                    <div>Nenhum resultado foi encontrado</div>
+                )
+            } else {                
+                if (Number(this.props.match.params.pageNumber) <= this.props.pageQtt) {
+                    return (
+                        <div className="search-page mb-5">
+                            <div className="container">
+                                <h2>{this.props.resultQtt} results were found...</h2>
+                                <h4 className="text-right"> Page {this.props.match.params.pageNumber} of {this.props.pageQtt} </h4>
+                                <div className="row">
+                                    {this.props.result.map( (obj, i) => {
+                                        return (
+                                            <div key={i} className="col-2 mt-5">
+                                                <MovieCard movie={obj} /> 
+                                            </div>                                                   
+                                        );
+                                    })}
+                                </div>                    
+                                <Pagination pageNumber={this.props.match.params.pageNumber} totalPages={ (this.props.pageQtt) } baseLink={`/search/${this.props.match.params.query}`}/>              
+                            </div>
+                        </div>            
+                    );
+                } else {
+                    return (<Redirect to={`/search/${this.props.match.params.query}/1`}>dasjdasd</Redirect >);
+                }
+            }
+        }
+        
     }
 }
 
-export default connect( (state) => ({result: state.searchResult, fetching: state.fetching, resultQtt: state.searchResultQtt}), { searchMovie } )(SearchPage);
+export default connect( (state) => ({result: state.searchResult, fetching: state.fetching, resultQtt: state.searchResultQtt, pageQtt: state.searchPageQtt}), { searchMovie, eraseSearchResult } )(SearchPage);
