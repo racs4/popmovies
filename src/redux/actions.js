@@ -1,4 +1,4 @@
-import { ADD_TODO, TOGGLE_TODO, SET_FILTER, REQUESTING_DATA, RECEIVED_POP_MOVIES, RECEIVED_MOVIE, RECEIVED_SEARCH_RESULT, ERASE_MOVIE, ERASE_SEARCH_RESULT } from "./actionTypes";
+import { ADD_TODO, TOGGLE_TODO, SET_FILTER, REQUESTING_DATA, RECEIVED_POP_MOVIES, RECEIVED_ERROR, RECEIVED_MOVIE, RECEIVED_SEARCH_RESULT, ERASE_MOVIE, ERASE_SEARCH_RESULT } from "./actionTypes";
 import axios from 'axios';
 import { API_URL, API_PARAMETERS, LANGUAGE, API_KEY } from '../config';
 
@@ -14,6 +14,10 @@ export const eraseSearchResult = () => ({
 
 const requestingPopMovies = () => ({
     type: REQUESTING_DATA,
+});
+
+const errorReceived = () => ({
+    type: RECEIVED_ERROR,
 });
 
 const receivedPopMovies = (movies) => ({
@@ -35,6 +39,9 @@ export const getMovies = () => {
             .then((response) => {
                 console.log(response);
                 dispatch(receivedPopMovies(response.data.results));
+            })
+            .catch(error => {
+              dispatch(errorReceived());
             });        
     }
 }
@@ -47,8 +54,8 @@ export const getMovie = (movieId) => {
         console.log(response);
         dispatch(receivedMovie(response.data));
       })
-      .catch((error) => {
-        console.log(error);
+      .catch(error => {
+        dispatch(errorReceived());
       });
   }
 }
@@ -61,8 +68,8 @@ export const searchMovie = (query, page) => {
         console.log(response);
         dispatch(receivedSearchResult(response.data.results, response.data.total_results, response.data.total_pages));
       })
-      .catch((error) => {
-        console.log(error);
+      .catch(error => {
+        dispatch(errorReceived());
       });
   }
 }

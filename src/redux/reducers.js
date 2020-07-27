@@ -1,4 +1,4 @@
-import { ADD_TODO, TOGGLE_TODO, REQUESTING_DATA, RECEIVED_POP_MOVIES, SEARCH, RECEIVED_MOVIE, RECEIVED_SEARCH_RESULT, ERASE_MOVIE, ERASE_SEARCH_RESULT } from "./actionTypes";
+import { ADD_TODO, TOGGLE_TODO, REQUESTING_DATA, RECEIVED_POP_MOVIES, SEARCH, RECEIVED_MOVIE, RECEIVED_SEARCH_RESULT, ERASE_MOVIE, ERASE_SEARCH_RESULT, RECEIVED_ERROR } from "./actionTypes";
 
 const initialState = {
   movies: [],
@@ -7,6 +7,7 @@ const initialState = {
   searchResult: [],
   searchResultQtt: 0,
   searchPageQtt: 0,
+  error: false
 };
 
 export default function(state = initialState, action) {
@@ -18,14 +19,16 @@ export default function(state = initialState, action) {
         return {
             ...state,
             fetching: false,
-            movies
+            movies,
+            error: false,
         };
     case RECEIVED_MOVIE:
        const { movie } = action.payload;
        return {
          ...state,
          selectedMovie: movie,
-         fetching: false
+         fetching: false,
+         error: false,
        };
     case RECEIVED_SEARCH_RESULT:
        const { result, resultQtt, pageQtt } = action.payload;
@@ -36,6 +39,7 @@ export default function(state = initialState, action) {
          searchResult: result,
          searchResultQtt: resultQtt,
          searchPageQtt: pageQtt,
+         error: false,
        };
     case ERASE_MOVIE: 
        return {
@@ -49,6 +53,11 @@ export default function(state = initialState, action) {
          searchResultQtt: 0,
          searchPageQtt: 0,
        };
+    case RECEIVED_ERROR:
+      return {
+        ...state,
+        error: true,
+      };
     case ADD_TODO: {
       const { id, content } = action.payload;
       return {

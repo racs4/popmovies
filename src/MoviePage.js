@@ -5,6 +5,8 @@ import Loader from './widgets/Loader';
 import './MoviePage.css';
 import { IMAGE_URL } from './config';
 import MovieCard from './widgets/MovieCard';
+import Error from './widgets/Error';
+import { INTERNAL_ERROR } from './widgets/ErrorConstants';
 
 const genres = (genres) => {
     return genres ? 
@@ -37,10 +39,10 @@ class MoviePage extends React.Component {
         }        
     }
 
-    render() {        
-        console.log(this.props);
+    render() {                
         
-        return Object.entries(this.props.selectedMovie).length !== 0 ? 
+        return this.props.error ? <Error type={INTERNAL_ERROR} /> :
+        Object.entries(this.props.selectedMovie).length !== 0 ? 
          (
             <div className="movie-page">
                 <div className="container">
@@ -95,4 +97,4 @@ class MoviePage extends React.Component {
     }
 }
 
-export default connect((state) => ({selectedMovie: state.selectedMovie, fetching: state.fetching}), ( { getMovie, eraseMovie } ) )(MoviePage);
+export default connect((state) => ({error: state.error, selectedMovie: state.selectedMovie, fetching: state.fetching}), ( { getMovie, eraseMovie } ) )(MoviePage);

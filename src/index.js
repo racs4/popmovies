@@ -15,6 +15,8 @@ import {
 import MoviePage from './MoviePage';
 import SearchPage from './SearchPage';
 import Header from './Header';
+import Error from './widgets/Error';
+import { PAGE_NOT_FOUND } from './widgets/ErrorConstants';
 
 ReactDOM.render(
   <Provider store={store}>    
@@ -22,8 +24,11 @@ ReactDOM.render(
       <Switch>
           <Route path="/movie/:id" component={MoviePage} />
           <Route path="/search/:query/:pageNumber" component={SearchPage} />
-          <Route path="/">
+          <Route path="/" exact>
             <App />
+          </Route>
+          <Route path="/">
+            <Error type={PAGE_NOT_FOUND}  />
           </Route>
         </Switch>            
       <Header />

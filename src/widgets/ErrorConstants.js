@@ -1,0 +1,3 @@
+export const NO_RESULTS = "NO_RESULTS";
+export const PAGE_NOT_FOUND = "PAGE_NOT_FOUND";
+export const INTERNAL_ERROR = "INTERNAL_ERROR";

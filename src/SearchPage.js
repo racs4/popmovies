@@ -6,6 +6,8 @@ import './SearchPage.css';
 import MovieCard from './widgets/MovieCard';
 import Pagination from './widgets/Pagination';
 import { Redirect } from 'react-router-dom';
+import Error from './widgets/Error';
+import { NO_RESULTS } from './widgets/ErrorConstants';
 
 class SearchPage extends React.Component {
     
@@ -32,7 +34,7 @@ class SearchPage extends React.Component {
         } else {
             if (this.props.pageQtt === 0) {
                 return (
-                    <div>Nenhum resultado foi encontrado</div>
+                    <Error type={NO_RESULTS} />
                 )
             } else {                
                 if (Number(this.props.match.params.pageNumber) <= this.props.pageQtt) {
@@ -55,7 +57,7 @@ class SearchPage extends React.Component {
                         </div>            
                     );
                 } else {
-                    return (<Redirect to={`/search/${this.props.match.params.query}/1`}>dasjdasd</Redirect >);
+                    return (<Redirect to={`/search/${this.props.match.params.query}/1`}></Redirect >);
                 }
             }
         }
