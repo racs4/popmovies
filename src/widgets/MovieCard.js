@@ -18,7 +18,7 @@ const MovieCard = (props) => {
             <div className="card-img-overlay">
                 <h5 className={`card-title movie-card-title ${isThereImg ? "detail" : ""} `} > {props.movie.title} </h5> 
                 <p className={`card-text movie-card-text detail `} >{props.movie.overview}</p> 
-                <span id="movie-year" className="card-text">{props.movie.release_date.split("-")[0]} </span>
+                <span id="movie-year" className="card-text">{props.movie.release_date ? props.movie.release_date.split("-")[0] : ""} </span>
                 <span id="movie-rate"> {props.movie.vote_average} </span>                
             </div>
         </div>
