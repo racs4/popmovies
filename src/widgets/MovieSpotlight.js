@@ -14,7 +14,7 @@ const MovieSpotlight = (props) => {
                 <div className="card-body">
                 <h2 className="card-title spotlight-title">{props.movie.title}</h2>
                 <p className="card-text spotlight-text"> {props.movie.overview} </p>
-                <Link to={`/movie/${props.movie.id}`}> <p className="card-text">See more</p> </Link>
+                <p className="card-text"> <Link to={`/movie/${props.movie.id}`}> <span> See more </span></Link> </p>
                 <p className="card-text spotlight-text text-right"><small className="text-muted">Released in {props.movie.release_date}</small></p>
                 <span className="spotlight-rate"> {props.movie.vote_average} </span>
             </div>
