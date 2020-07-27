@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { getMovie } from './redux/actions';
+import Loader from './widgets/Loader';
 
 class MoviePage extends React.Component {
 
@@ -19,7 +20,7 @@ class MoviePage extends React.Component {
         ) 
         : 
         (
-            <h1>Carregando</h1>
+            <div> <Loader /> </div>
         );
     }
 }

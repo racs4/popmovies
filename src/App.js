@@ -5,6 +5,7 @@ import { getMovies } from './redux/actions';
 import { IMAGE_URL } from './config';
 import MovieCard from './widgets/MovieCard';
 import MovieSpotLight from './widgets/MovieSpotlight';
+import Loader from './widgets/Loader';
 
 class App extends React.Component {
 
@@ -98,7 +99,7 @@ class App extends React.Component {
     )
     :
     (
-      <div>Carregando</div>
+      <div> <Loader /> </div>
     );
   }
 }
