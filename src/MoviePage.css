@@ -1,0 +1,19 @@
+.similar-movies h1 {
+    font-family: 'Pacifico', cursive;
+}
+
+.movie-page {
+    margin-top: 20vh;    
+}
+
+.movie-image {
+    position: absolute;
+}
+
+.movie-rate {
+    border-radius: 2px;
+    background-color: yellow;
+    color: black;
+    padding: 0 5px;
+    font-weight: 700;
+}
