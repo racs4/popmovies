@@ -20,6 +20,13 @@ const conversor = (number) => {
     return new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(number);
 }
 
+const validate = (prop, elem) => {    
+    console.log(prop);
+    return prop === null || prop === 0 || prop.length === 0?
+        null :
+        elem
+}
+
 class MoviePage extends React.Component {
 
     componentDidMount() {        
@@ -53,40 +60,58 @@ class MoviePage extends React.Component {
                         <div className="col-lg-8 col-sm-12">
                             <h1> {this.props.selectedMovie.title} </h1>    
                             <p> {this.props.selectedMovie.overview} </p>
-                            <p> Released in: {this.props.selectedMovie.release_date}</p>
-                            <p> Revenue: {conversor(this.props.selectedMovie.revenue)}</p>
-                            <p> Budget: {conversor(this.props.selectedMovie.budget)}</p>
-                            <p> Status: {this.props.selectedMovie.status}</p>                            
+                            {validate(this.props.selectedMovie.release_date, (<p> Release date: {this.props.selectedMovie.release_date}</p>))}
+                            {validate(this.props.selectedMovie.revenue,  (<p> Revenue: {conversor(this.props.selectedMovie.revenue)}</p>))}                            
+                            {validate(this.props.selectedMovie.budget, (<p> Budget: {conversor(this.props.selectedMovie.budget)}</p>))}                            
+                            {validate(this.props.selectedMovie.status,  (<p> Status: {this.props.selectedMovie.status}</p>))}                                                        
                             {genres(this.props.selectedMovie.genres)}
-                            <p> Rating: <span className="movie-rate" > {this.props.selectedMovie.vote_average} </span> </p>
-                            <a href={this.props.selectedMovie.homepage}> <p> Official Website </p> </a>
+                            {
+                                validate(this.props.selectedMovie.vote_average, (<p> Rating: <span className="movie-rate" > {this.props.selectedMovie.vote_average} </span> </p>))
+                            }                            
+                            {
+                                validate(this.props.selectedMovie.homepage, (<a href={this.props.selectedMovie.homepage}> <p> Official Website </p> </a>))
+                            }
                         </div>
                     </div> 
-                        <div className="similar-movies mt-5 mb-5">
-                            <h1> Similar movies </h1>
-                            <div className="row">
-                            { this.props.selectedMovie.similar.results.slice(0,4).map( (obj, i) => {
-                                return (
-                                    <div key={i} className="col-lg-3 col-sm-3 col-6 mt-5">
-                                        <MovieCard movie={obj} detail={true} />
+                        {
+                            validate(
+                                this.props.selectedMovie.similar.results,
+                                (
+                                    <div className="similar-movies mt-5 mb-5">
+                                        <h1> Similar movies </h1>
+                                        <div className="row">
+                                        { this.props.selectedMovie.similar.results.slice(0,4).map( (obj, i) => {
+                                            return (
+                                                <div key={i} className="col-lg-3 col-sm-3 col-6 mt-5">
+                                                    <MovieCard movie={obj} detail={true} />
+                                                </div>
+                                            );
+                                        }) } 
+                                        </div>                            
                                     </div>
-                                );
-                            }) } 
-                            </div>                            
-                        </div>
+                                )
+                            )
+                        }                        
 
-                        <div className="similar-movies mt-5 mb-5">
-                            <h1> Because you've searched "{this.props.selectedMovie.title}" </h1>
-                            <div className="row">
-                            { this.props.selectedMovie.recommendations.results.slice(0,4).map( (obj, i) => {
-                                return (
-                                    <div key={i} className="col-lg-3 col-sm-3 col-6 mt-5">
-                                        <MovieCard movie={obj} detail={true} />
-                                    </div>
-                                );
-                            }) } 
-                            </div>                            
-                        </div>                                            
+                        {
+                            validate(
+                                this.props.selectedMovie.recommendations.results, 
+                                (
+                                    <div className="similar-movies mt-5 mb-5">
+                                        <h1> Because you've searched "{this.props.selectedMovie.title}" </h1>
+                                        <div className="row">
+                                        { this.props.selectedMovie.recommendations.results.slice(0,4).map( (obj, i) => {
+                                            return (
+                                                <div key={i} className="col-lg-3 col-sm-3 col-6 mt-5">
+                                                    <MovieCard movie={obj} detail={true} />
+                                                </div>
+                                            );
+                                        }) } 
+                                        </div>                            
+                                    </div>       
+                                )
+                            )
+                        }                                                            
                 </div>                
             </div>
         ) 
