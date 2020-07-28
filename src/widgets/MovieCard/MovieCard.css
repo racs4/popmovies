@@ -14,7 +14,7 @@
     position: absolute;
     font-weight: 700;
     bottom: 0;
-    right: 0;
+    left: 0;
     color: black;
     background-color: yellow;
     border-radius: 2px;
@@ -22,13 +22,30 @@
 }
 
 .movie-card {
-    transition: all .5s ease;
+    transition: all .3s ease;
     cursor: pointer;
     overflow: auto;    
 }
 
-.movie-card:hover {
-    transform: scale(1.1);
+.movie-heart {
+    color: red;
+    position: absolute;
+    right: 2%;
+    bottom: 0;    
+    font-size: 2rem;
+    cursor: pointer;    
+}
+
+.empty {
+    display: none;
+}
+
+.liked.empty {
+    display: unset;
+}
+
+.liked.solid {
+    display: none;
 }
 
 .movie-card.detail {
@@ -40,21 +57,41 @@
     display: none;
 }
 
-.detail-active.movie-card:hover {
+.detail-active.movie-card-container:hover {
     height: 100%;
     
 }
 
-.detail-active.movie-card:hover > img {    
+.detail-active.movie-card-container:hover  img {    
     visibility: hidden;    
 }
 
-.detail-active.movie-card:hover .movie-card-title, .detail-active.movie-card:hover .movie-card-text {    
+.detail-active.movie-card a {
+    text-decoration: none;
+    color: lightcyan;
+}
+
+.detail-active.movie-card-container:hover .movie-card-title, .detail-active.movie-card-container:hover .movie-card-text {    
     display: block;
 }
 
-.detail-active.movie-card:hover #movie-year, .detail-active.movie-card:hover #movie-rate {
+.detail-active.movie-card-container:hover #movie-year, .detail-active.movie-card-container:hover #movie-rate{
     display: none;
+}
+
+.detail-active.movie-card-container:hover .movie-heart {        
+    color: white;          
+    transform: scale(1.1);
+    transform: translate(-40%, -25%);
+}
+
+.movie-card-container {
+    transform: translateZ(0);
+    transition: all .5s ease;
+}
+
+.movie-card-container:hover {
+    transform: scale(1.1);
 }
 
 /* width */
