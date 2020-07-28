@@ -8,4 +8,4 @@ Instala os pacotes necessários à aplicação
 
 ### `npm start`
 
-Roda o app em modo de desenvolvimento em [http://localhost:3000].
+Roda o app em modo de desenvolvimento em [http://localhost:3000](http://localhost:3000).
