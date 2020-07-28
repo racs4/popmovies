@@ -20,11 +20,12 @@ const conversor = (number) => {
     return new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(number);
 }
 
-const validate = (prop, elem) => {    
+const validate = (prop, elem, asd) => {    
     console.log(prop);
-    return prop === null || prop === 0 || prop.length === 0?
+    console.log(asd);
+    return prop === null || prop === 0 || prop.length === 0 ?
         null :
-        elem
+        elem;
 }
 
 class MoviePage extends React.Component {
@@ -47,7 +48,7 @@ class MoviePage extends React.Component {
     }
 
     render() {                
-        
+        console.log(this.props.selectedMovie);
         return this.props.error ? <Error type={INTERNAL_ERROR} /> :
         Object.entries(this.props.selectedMovie).length !== 0 ? 
          (
@@ -72,7 +73,19 @@ class MoviePage extends React.Component {
                                 validate(this.props.selectedMovie.homepage, (<a href={this.props.selectedMovie.homepage}> <p> Official Website </p> </a>))
                             }
                         </div>
-                    </div> 
+                    </div>                                                                     
+                        {
+                            this.props.selectedMovie.videos.results.length !== 0 ?
+                                (
+                                    <div className="similar-movies mt-5">
+                                        <h1> A taste... </h1>
+                                        <div className="embed-responsive embed-responsive-16by9">
+                                            <iframe  title={this.props.selectedMovie.title} className="embed-responsive-item" src={`https://www.youtube.com/embed/${this.props.selectedMovie.videos.results[0].key}?rel=0`} allowFullScreen></iframe>
+                                        </div>                                                                  
+                                    </div>
+                                ) :
+                                null
+                        }    
                         {
                             validate(
                                 this.props.selectedMovie.similar.results,
@@ -91,8 +104,7 @@ class MoviePage extends React.Component {
                                     </div>
                                 )
                             )
-                        }                        
-
+                        }    
                         {
                             validate(
                                 this.props.selectedMovie.recommendations.results, 
