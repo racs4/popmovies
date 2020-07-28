@@ -25,23 +25,23 @@ class App extends React.Component {
             <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
             <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
           </ol>
-          <div className="carousel-inner">
-            <div data-interval="7000" className="carousel-item active" style={{backgroundImage: "url(https://image.tmdb.org/t/p/original/xXBnM6uSTk6qqCf0SRZKXcga9Ba.jpg)"}}>              
-              <div className="carousel-caption d-none d-md-block">
+          <div className="carousel-inner">            
+            <div data-interval="7000" className="carousel-item active" style={{backgroundImage: `url(${IMAGE_URL}/original${this.props.movies[0].poster_path})`}}>              
+              <div className="carousel-caption">
                 <h1> {this.props.movies[0].title }</h1>
-                <p> {this.props.movies[0].overview} </p>
+                <p className="d-none d-md-block"> {this.props.movies[0].overview} </p>
               </div>
             </div>
-            <div data-interval="7000" className="carousel-item" style={{backgroundImage: "url(https://image.tmdb.org/t/p/original/cjr4NWURcVN3gW5FlHeabgBHLrY.jpg)"}}>              
-              <div className="carousel-caption d-none d-md-block">
+            <div data-interval="7000" className="carousel-item" style={{backgroundImage: `url(${IMAGE_URL}/original${this.props.movies[1].poster_path})`}}>              
+              <div className="carousel-caption">
                 <h1> {this.props.movies[1].title }</h1>
-                <p> {this.props.movies[1].overview} </p>
+                <p className="d-none d-md-block"> {this.props.movies[1].overview} </p>
               </div>
             </div>
-            <div data-interval="7000" className="carousel-item" style={{backgroundImage: "url(https://image.tmdb.org/t/p/original/xBHvZcjRiWyobQ9kxBhO6B2dtRI.jpg)"}}>              
-              <div className="carousel-caption d-none d-md-block">
+            <div data-interval="7000" className="carousel-item" style={{backgroundImage: `url(${IMAGE_URL}/original${this.props.movies[2].poster_path})`}}>              
+              <div className="carousel-caption">
                 <h1> {this.props.movies[2].title }</h1>
-                <p> {this.props.movies[2].overview} </p>
+                <p className="d-none d-md-block"> {this.props.movies[2].overview} </p>
               </div>
             </div>
           </div>
@@ -63,7 +63,7 @@ class App extends React.Component {
           <div className="row pb-5">          
             {this.props.movies.slice(3,7).map( (obj, i) => {
                 return (
-                  <div key={i} className="col-lg-3 col-sm-12 mt-5">
+                  <div key={i} className="col-lg-3 col-sm-6 col-6 mt-5">
                     <MovieCard movie={obj} detail={true}/>                  
                   </div>
                 );
@@ -87,7 +87,7 @@ class App extends React.Component {
           <div className="row">                      
             {this.props.movies.slice(8).map( (obj, i) => {
                   return (
-                    <div key={i} className="col-lg-2 col-sm-12 mt-5">
+                    <div key={i} className="col-lg-2 col-sm-3 col-6 mt-5">
                       <MovieCard movie={obj} />                  
                     </div>
                   );
