@@ -46,7 +46,7 @@ class SearchPage extends React.Component {
                                 <div className="row">
                                     {this.props.result.map( (obj, i) => {
                                         return (
-                                            <div key={i} className="col-2 mt-5">
+                                            <div key={i} className="col-lg-2 col-sm-3 col-6 mb-5" style={{height: "250px"}}>
                                                 <MovieCard movie={obj} /> 
                                             </div>                                                   
                                         );

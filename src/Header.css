@@ -35,3 +35,17 @@
   text-decoration: none;
   color: lightcyan;
 }
+
+@media(max-width: 425px) {
+  .header h1{
+    font-size: 2rem;
+  }
+
+  .header input {
+    font-size: .8rem;
+  }
+
+  .header i {
+    font-size: .75rem;
+  }
+}
