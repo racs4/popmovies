@@ -1,4 +1,4 @@
-import { ADD_TODO, TOGGLE_TODO, REQUESTING_DATA, RECEIVED_POP_MOVIES, SEARCH, RECEIVED_MOVIE, RECEIVED_SEARCH_RESULT, ERASE_MOVIE, ERASE_SEARCH_RESULT, RECEIVED_ERROR } from "./actionTypes";
+import { REQUESTING_DATA, RECEIVED_POP_MOVIES, RECEIVED_MOVIE, RECEIVED_SEARCH_RESULT, ERASE_MOVIE, ERASE_SEARCH_RESULT, RECEIVED_ERROR } from "./actionTypes";
 
 const initialState = {
   movies: [],
@@ -58,33 +58,6 @@ export default function(state = initialState, action) {
         ...state,
         error: true,
       };
-    case ADD_TODO: {
-      const { id, content } = action.payload;
-      return {
-        ...state,
-        allIds: [...state.allIds, id],
-        byIds: {
-          ...state.byIds,
-          [id]: {
-            content,
-            completed: false
-          }
-        }
-      };
-    }
-    case TOGGLE_TODO: {
-      const { id } = action.payload;
-      return {
-        ...state,
-        byIds: {
-          ...state.byIds,
-          [id]: {
-            ...state.byIds[id],
-            completed: !state.byIds[id].completed
-          }
-        }
-      };
-    }
     default:
       return state;
   }

@@ -20,9 +20,7 @@ const conversor = (number) => {
     return new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(number);
 }
 
-const validate = (prop, elem, asd) => {    
-    console.log(prop);
-    console.log(asd);
+const validate = (prop, elem, asd) => {            
     return prop === null || prop === 0 || prop.length === 0 ?
         null :
         elem;
@@ -47,8 +45,7 @@ class MoviePage extends React.Component {
         }        
     }
 
-    render() {                
-        console.log(this.props.selectedMovie);
+    render() {                        
         return this.props.error ? <Error type={INTERNAL_ERROR} /> :
         Object.entries(this.props.selectedMovie).length !== 0 ? 
          (
