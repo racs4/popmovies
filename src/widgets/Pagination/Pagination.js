@@ -17,7 +17,7 @@ const Pagination = (props) => {
         <nav aria-label="Page navigation example">
             <ul className="pagination justify-content-end">
                 <li className={`page-item ${ isTherePreviousPage ? "" : "disabled"}`}>
-                <a className="page-link" href={`${props.baseLink}/${pageNumber - 1}`} tabindex="-1" aria-disabled="true">Previous</a>
+                <a className="page-link" href={`${props.baseLink}/${pageNumber - 1}`} tabIndex="-1" aria-disabled="true">Previous</a>
                 </li>
                 {previousNumber()}
                 <li className="page-item active disabled"><a className="page-link" href={`${props.baseLink}/${pageNumber}`}>{pageNumber}</a></li>
