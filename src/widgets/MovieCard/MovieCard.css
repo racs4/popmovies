@@ -42,10 +42,11 @@
 
 .detail-active.movie-card:hover {
     height: 100%;
+    
 }
 
 .detail-active.movie-card:hover > img {    
-    display: none;
+    visibility: hidden;    
 }
 
 .detail-active.movie-card:hover .movie-card-title, .detail-active.movie-card:hover .movie-card-text {    
