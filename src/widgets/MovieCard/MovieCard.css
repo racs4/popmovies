@@ -81,8 +81,8 @@
 
 .detail-active.movie-card-container:hover .movie-heart {        
     color: white;          
-    transform: scale(1.1);
-    transform: translate(-40%, -25%);
+    transform: scale(0.75);
+    transform: translate(-40%, -45%);
 }
 
 .movie-card-container {
