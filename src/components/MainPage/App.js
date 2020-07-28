@@ -1,11 +1,11 @@
 import React from 'react';
 import './App.css';
 import { connect } from 'react-redux';
-import { getMovies } from './redux/actions';
-import { IMAGE_URL } from './config';
-import MovieCard from './widgets/MovieCard/MovieCard';
-import MovieSpotLight from './widgets/MovieSpotlight/MovieSpotlight';
-import Loader from './widgets/Loader/Loader';
+import { getMovies } from '../../redux/actions';
+import { IMAGE_URL } from '../../config';
+import MovieCard from '../../widgets/MovieCard/MovieCard';
+import MovieSpotLight from '../../widgets/MovieSpotlight/MovieSpotlight';
+import Loader from '../../widgets/Loader/Loader';
 import { Link } from 'react-router-dom';
 
 class App extends React.Component {

@@ -1,12 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { getMovie, eraseMovie } from './redux/actions';
-import Loader from './widgets/Loader/Loader';
+import { getMovie, eraseMovie } from '../../redux/actions';
+import Loader from '../../widgets/Loader/Loader';
 import './MoviePage.css';
-import { IMAGE_URL } from './config';
-import MovieCard from './widgets/MovieCard/MovieCard';
-import Error from './widgets/Error/Error';
-import { INTERNAL_ERROR } from './widgets/Error/ErrorConstants';
+import { IMAGE_URL } from '../../config';
+import MovieCard from '../../widgets/MovieCard/MovieCard';
+import Error from '../../widgets/Error/Error';
+import { INTERNAL_ERROR } from '../../widgets/Error/ErrorConstants';
 
 const genres = (genres) => {
     return genres ? 
