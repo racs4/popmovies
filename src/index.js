@@ -15,8 +15,8 @@ import {
 import MoviePage from './MoviePage';
 import SearchPage from './SearchPage';
 import Header from './Header';
-import Error from './widgets/Error';
-import { PAGE_NOT_FOUND } from './widgets/ErrorConstants';
+import Error from './widgets/Error/Error';
+import { PAGE_NOT_FOUND } from './widgets/Error/ErrorConstants';
 
 ReactDOM.render(
   <Provider store={store}>    

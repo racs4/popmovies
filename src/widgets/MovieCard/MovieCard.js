@@ -1,6 +1,6 @@
 import React from 'react';
 import './MovieCard.css';
-import { IMAGE_URL } from '../config';
+import { IMAGE_URL } from '../../config';
 import { Link } from 'react-router-dom';
 
 const img = (path, title) => {

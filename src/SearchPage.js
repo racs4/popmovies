@@ -1,13 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import {searchMovie, eraseSearchResult} from './redux/actions';
-import Loader from './widgets/Loader';
+import Loader from './widgets/Loader/Loader';
 import './SearchPage.css';
-import MovieCard from './widgets/MovieCard';
-import Pagination from './widgets/Pagination';
+import MovieCard from './widgets/MovieCard/MovieCard';
+import Pagination from './widgets/Pagination/Pagination';
 import { Redirect } from 'react-router-dom';
-import Error from './widgets/Error';
-import { NO_RESULTS } from './widgets/ErrorConstants';
+import Error from './widgets/Error/Error';
+import { NO_RESULTS } from './widgets/Error/ErrorConstants';
 
 class SearchPage extends React.Component {
     

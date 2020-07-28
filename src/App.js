@@ -3,9 +3,10 @@ import './App.css';
 import { connect } from 'react-redux';
 import { getMovies } from './redux/actions';
 import { IMAGE_URL } from './config';
-import MovieCard from './widgets/MovieCard';
-import MovieSpotLight from './widgets/MovieSpotlight';
-import Loader from './widgets/Loader';
+import MovieCard from './widgets/MovieCard/MovieCard';
+import MovieSpotLight from './widgets/MovieSpotlight/MovieSpotlight';
+import Loader from './widgets/Loader/Loader';
+import { Link } from 'react-router-dom';
 
 class App extends React.Component {
 
@@ -13,8 +14,7 @@ class App extends React.Component {
     this.props.getMovies();
   }
   
-  render() {
-    console.log(this.props.movies);    
+  render() {    
     return (this.props.movies.length !== 0) ? 
      (      
       <div>
@@ -27,22 +27,28 @@ class App extends React.Component {
           </ol>
           <div className="carousel-inner">            
             <div data-interval="7000" className="carousel-item active" style={{backgroundImage: `url(${IMAGE_URL}/original${this.props.movies[0].poster_path})`}}>              
-              <div className="carousel-caption">
+              <Link to={`/movie/${this.props.movies[0].id}`}>
+                <div className="carousel-caption">
                 <h1> {this.props.movies[0].title }</h1>
-                <p className="d-none d-md-block"> {this.props.movies[0].overview} </p>
-              </div>
+                <p className="d-none d-md-block"> {this.props.movies[0].overview} </p>                
+                </div>
+              </Link>
             </div>
             <div data-interval="7000" className="carousel-item" style={{backgroundImage: `url(${IMAGE_URL}/original${this.props.movies[1].poster_path})`}}>              
-              <div className="carousel-caption">
+              <Link to={`/movie/${this.props.movies[1].id}`}>
+                <div className="carousel-caption">
                 <h1> {this.props.movies[1].title }</h1>
-                <p className="d-none d-md-block"> {this.props.movies[1].overview} </p>
-              </div>
+                <p className="d-none d-md-block"> {this.props.movies[1].overview} </p>                
+                </div>
+              </Link>
             </div>
             <div data-interval="7000" className="carousel-item" style={{backgroundImage: `url(${IMAGE_URL}/original${this.props.movies[2].poster_path})`}}>              
-              <div className="carousel-caption">
+              <Link to={`/movie/${this.props.movies[2].id}`}>
+                <div className="carousel-caption">
                 <h1> {this.props.movies[2].title }</h1>
-                <p className="d-none d-md-block"> {this.props.movies[2].overview} </p>
-              </div>
+                <p className="d-none d-md-block"> {this.props.movies[2].overview} </p>                
+                </div>
+              </Link>
             </div>
           </div>
           <a className="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">

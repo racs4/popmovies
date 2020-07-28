@@ -31,8 +31,7 @@ export default function(state = initialState, action) {
          error: false,
        };
     case RECEIVED_SEARCH_RESULT:
-       const { result, resultQtt, pageQtt } = action.payload;
-       console.log(resultQtt);
+       const { result, resultQtt, pageQtt } = action.payload;       
        return {
          ...state,
          fetching: false,

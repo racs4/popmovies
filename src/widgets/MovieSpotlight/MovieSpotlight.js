@@ -1,6 +1,6 @@
 import React from 'react';
 import './MovieSpotlight.css';
-import { IMAGE_URL } from '../config';
+import { IMAGE_URL } from '../../config';
 import { Link } from 'react-router-dom';
 
 const MovieSpotlight = (props) => {
