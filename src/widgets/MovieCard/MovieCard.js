@@ -10,8 +10,6 @@ const img = (path, title) => {
     :   <span></span>;
 }
 
-
-
 class MovieCard extends React.Component {
 
     constructor(props) {
@@ -54,6 +52,16 @@ class MovieCard extends React.Component {
         }    
     }
 
+    movieHeart = (detailActive) => {
+        return detailActive ? 
+            (   <div>
+                    <span className={`movie-heart empty ${ this.state.liked ? "liked" : ""}`} onClick={ () => {this.setCookie(this.props.movie.id)} }> <i className="fas fa-heart"></i> </span>
+                    <span className={`movie-heart solid ${ this.state.liked ? "liked" : ""}`} onClick={ () => {this.setCookie(this.props.movie.id)} }> <i className="far fa-heart"></i> </span>
+                </div>
+            ) :
+            null;
+    }
+
     render() {
     
         let detailActive = this.props.detail ? "detail-active" : "";
@@ -71,11 +79,11 @@ class MovieCard extends React.Component {
                                 {/* <span id="movie-year" className="card-text">{this.props.movie.release_date ? this.props.movie.release_date.split("-")[0] : ""} </span> */}
                                 <span id="movie-rate"> {this.props.movie.vote_average === 0 ? "N/A" : this.props.movie.vote_average} </span>                
                             </div>
-                    </Link>                    
+                    </Link>   
+                    {this.movieHeart(!this.props.detail)}
                 </div>     
-                
-                    <span className={`movie-heart empty ${ this.state.liked ? "liked" : ""}`} onClick={ () => {this.setCookie(this.props.movie.id)} }> <i className="fas fa-heart"></i> </span>
-                    <span className={`movie-heart solid ${ this.state.liked ? "liked" : ""}`} onClick={ () => {this.setCookie(this.props.movie.id)} }> <i className="far fa-heart"></i> </span>                       
+                {this.movieHeart(this.props.detail)}
+                                           
             </div>
         );
     }

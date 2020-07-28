@@ -53,6 +53,15 @@
     display: block;
 }
 
+.movie-card-container {
+    height: 100%;
+    display: block;
+}
+
+.movie-card-container a {
+    color: lightcyan;
+}
+
 .detail {
     display: none;
 }
